@@ -1,0 +1,27 @@
+name: "env-validator"
+description: "Validate .env files against .env.example — missing keys, extra keys, and type mismatches"
+author: "SCL339"
+branding:
+  icon: "check-circle"
+  color: "green"
+inputs:
+  env-path:
+    description: "Path to the .env file"
+    required: false
+    default: ".env"
+  example-path:
+    description: "Path to the .env.example file"
+    required: false
+    default: ".env.example"
+  strict-types:
+    description: "Enable strict type checking"
+    required: false
+    default: "false"
+runs:
+  using: "composite"
+  steps:
+    - uses: actions/setup-node@v4
+      with:
+        node-version: "20"
+    - run: npx env-validator "${{ inputs.env-path }}" --example "${{ inputs.example-path }}" ${{ inputs.strict-types == 'true' && '--strict-types' || '' }}
+      shell: bash
