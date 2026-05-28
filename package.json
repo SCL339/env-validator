@@ -1,5 +1,6 @@
 {
-  "name": "env-validator",
+  "name": "scl339-env-validator",
+  "publishConfig": { "access": "public" },
   "version": "1.0.0",
   "description": "Validate .env files against .env.example — detect missing keys, extra keys, and type mismatches. Works as both a CLI tool and a GitHub Action.",
   "bin": {
